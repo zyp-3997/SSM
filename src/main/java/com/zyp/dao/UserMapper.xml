@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<!-- mybatis的主配置文件 -->
+<mapper namespace="com.zyp.dao.UserMapper" >
+    <insert id="add" parameterType="User">
+    insert into user (userid, username, password)VALUES (#{userid},#{username},#{password});
+    </insert>
+    <delete id="delete" parameterType="int">
+        DELETE from user where userid=#{id};
+    </delete>
+    <update id="update" parameterType="User">
+        update user set
+         username=#{username},password=#{password}
+           where userid=#{userid};
+    </update>
+    <select id="findById" resultType="User" parameterType="int">
+        select * from user where userid=#{userId};
+    </select>
+    <select id="findAll" resultType="User">
+        select * from user;
+    </select>
+
+</mapper>
